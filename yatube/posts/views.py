@@ -1,11 +1,12 @@
-from django.shortcuts import render, get_object_or_404
-# Импортируем модель, чтобы обратиться к ней
-from .models import Post, Group
+from django.shortcuts import get_object_or_404, render
+
+from .models import Group, Post
+
+POST_OBJ = 10
 
 
-# Главная страница по шаблону html
 def index(request):
-    posts = Post.objects.order_by('-pub_date')[:10]
+    posts = Post.objects.select_related('group')[:POST_OBJ]
     context = {
         'posts': posts,
         'title': 'Это главная страница проекта Yatube'
@@ -13,10 +14,9 @@ def index(request):
     return render(request, 'posts/index.html', context)
 
 
-# View-функция для страницы сообщества:
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
+    posts = group.group.all()[:POST_OBJ]
     context = {
         'group': group,
         'posts': posts,
