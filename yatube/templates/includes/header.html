@@ -1,11 +1,13 @@
+{% load static %}
+<!--templates/header.html-->
+<!-- Использованы классы бустрап для создания типовой навигации с логотипом-->
+      <!-- В дальнейшем здесь будет создано полноценное меню-->
 <header>
-  {% load static %}
-    <nav class="navbar navbar-light" style="background-color: lightskyblue">
-      <div class="container">
-        <a class="navbar-brand" href="{% url 'posts:index'%}">
-          <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-          <span style="color:red">Ya</span>tube
-        </a>
-      </div>
-    </nav>      
-  </header>
+  <nav class="navbar navbar-light" style="background-color: lightskyblue">
+    <div class="container"
+      <a class="navbar-brand" href="{% url 'posts:posts_list' slug='list' %}">
+        <img src="{% static 'img/logo.png'%}" width="30" class="d-inline-block align-top alt">
+        <span style="color:red">Ya</span>tube
+      </a>
+    </div>
+  </nav>

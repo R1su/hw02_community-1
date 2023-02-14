@@ -1,25 +1,24 @@
-from django.shortcuts import get_object_or_404, render
-
-from .models import Group, Post
-
-POST_OBJ = 10
+from django.shortcuts import render, get_object_or_404
+from .models import Post, Group
 
 
 def index(request):
-    posts = Post.objects.select_related('group')[:POST_OBJ]
+    title = ' Последнее обновление на сайте '
+    template = 'posts/index.html'
+    posts = Post.objects.order_by('-pub_date')[:10]
     context = {
+        'title': title,
         'posts': posts,
-        'title': 'Это главная страница проекта Yatube'
     }
-    return render(request, 'posts/index.html', context)
+    return render(request, template, context )
 
 
-def group_posts(request, slug):
-    group = get_object_or_404(Group, slug=slug)
-    posts = group.group.all()[:POST_OBJ]
+def group_posts(request, slug):     
+    group = get_object_or_404(Group, slug=slug )
+    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
     context = {
         'group': group,
         'posts': posts,
-        'title': 'Здесь будет информация о группах проекта Yatube'
     }
     return render(request, 'posts/group_list.html', context)
+# Create your views here.

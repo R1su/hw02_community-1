@@ -14,18 +14,13 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Django должен знать, откуда подгружать статические файлы:
-# в большом проекте может быть несколько директорий со статикой;
-# некоторые из этих директорий могут храниться даже на других серверах.
-# Адреса этих директорий указываются в файле settings.py,
-# списком или кортежем в константе STATICFILES_DIRS
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-0o+mraaikfx9#y8%4db%el1zs0qsw8y*ke9a#qqw!5(8so&r@'
+SECRET_KEY = '1q@@y)-@%=&af!3upe2n^f!dq40##*#jjfewb3-)w*chx9_=uo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -110,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -125,3 +120,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
